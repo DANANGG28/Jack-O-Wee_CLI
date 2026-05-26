@@ -50,8 +50,8 @@ npm start
 
 Edit `.env` (akan dibuat otomatis oleh installer):
 ```env
-X5_API_KEY=your_x5_api_key_here
-X5_BASE_URL=https://api.x5lab.dev
+API_KEY=your_api_key_here
+BASE_URL=https://api.dev
 CLAUDE_MODEL=claude-opus-4.7
 ```
 
@@ -79,7 +79,7 @@ You: Help me debug this code
 npm start
 
 # Advanced version
-node x5-claude-cli-advanced.js
+node claude-cli-advanced.js
 ```
 
 ### Basic Commands
@@ -174,11 +174,11 @@ Jack's Agentic pricing:
 
 ### Architecture
 - **Runtime:** Node.js 18+
-- **API:** X5 Labs (OpenAI-compatible format)
+- **API:**  (OpenAI-compatible format)
 - **Dependencies:** axios, chalk, dotenv, readline
 
 ### Response Format
-X5 Labs uses OpenAI format:
+ uses OpenAI format:
 ```json
 {
   "choices": [
@@ -227,7 +227,7 @@ node test-dynamic-label.js
 ## 🎨 Customization
 
 ### Change Bot Name
-Edit `x5-claude-cli.js`:
+Edit `claude-cli.js`:
 ```javascript
 process.stdout.write(chalk.cyan(`YourName | ${getModelDisplayName(currentModel)}: `));
 ```
@@ -239,9 +239,9 @@ CLAUDE_MODEL=claude-sonnet-4.5
 ```
 
 ### Adjust Retry Count
-Edit `callX5LabsAPI` function:
+Edit `callAPI` function:
 ```javascript
-async function callX5LabsAPI(messages, retries = 3) { // Change from 2 to 3
+async function callAPI(messages, retries = 3) { // Change from 2 to 3
 ```
 
 ## 🐛 Troubleshooting
@@ -251,7 +251,7 @@ async function callX5LabsAPI(messages, retries = 3) { // Change from 2 to 3
 # Check .env file
 cat .env
 
-# Pastikan X5_API_KEY sudah benar
+# Pastikan API_KEY sudah benar
 # Tidak ada spasi di awal/akhir
 ```
 
