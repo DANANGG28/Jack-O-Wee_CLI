@@ -1,0 +1,276 @@
+╔═══════════════════════════════════════════════════════════════╗
+║   X5 Labs Custom CLI - SETUP CHECKLIST                       ║
+║   (Ikuti step by step, jangan skip!)                         ║
+╚═══════════════════════════════════════════════════════════════╝
+
+✅ STEP 1: VERIFY NODE.JS INSTALLED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Di terminal/command prompt, ketik:
+  node --version
+
+Contoh output yang benar:
+  v18.17.0
+  (versi 18 atau lebih tinggi)
+
+❌ Kalau error "node: command not found":
+  ➜ Download dari https://nodejs.org (ambil LTS)
+  ➜ Install dan restart terminal
+
+✓ Node.js installed? GO TO STEP 2
+
+
+✅ STEP 2: PREPARE 3 FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Kamu butuh download 3 file ini dari /mnt/user-data/outputs/:
+
+  1. x5-claude-cli.js       ← Main script
+  2. package.json           ← Dependencies
+  3. .env.example           ← Config template
+
+Dimana download?
+  ➜ Buka browser atau file manager
+  ➜ Navigasi ke folder outputs (dari chat ini)
+  ➜ Download ketiga file
+
+Atau kalau dari terminal:
+  curl -o x5-claude-cli.js https://...
+  (minta link download ke admin/host)
+
+✓ Semua 3 file downloaded? GO TO STEP 3
+
+
+✅ STEP 3: CREATE PROJECT FOLDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Buat folder baru untuk project:
+
+LINUX / macOS:
+  mkdir my-claude-cli
+  cd my-claude-cli
+
+WINDOWS (Command Prompt):
+  mkdir my-claude-cli
+  cd my-claude-cli
+
+WINDOWS (PowerShell):
+  New-Item -ItemType Directory -Name my-claude-cli
+  cd my-claude-cli
+
+✓ Folder created dan kamu di dalamnya? GO TO STEP 4
+
+
+✅ STEP 4: COPY FILES KE FOLDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Copy 3 file tadi ke folder my-claude-cli
+
+EASIEST WAY:
+  ➜ Buka file manager
+  ➜ Navigasi ke folder my-claude-cli
+  ➜ Drag & drop 3 file ke folder
+
+ATAU dari terminal:
+  cp ~/Downloads/x5-claude-cli.js .
+  cp ~/Downloads/package.json .
+  cp ~/Downloads/.env.example .
+
+Verify files ada:
+  ls -la        (Linux/macOS)
+  dir           (Windows)
+
+Expected output:
+  x5-claude-cli.js
+  package.json
+  .env.example
+
+✓ Semua file ada? GO TO STEP 5
+
+
+✅ STEP 5: INSTALL DEPENDENCIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Di terminal (dalam folder my-claude-cli), ketik:
+  npm install
+
+Ini akan download library yang dibutuhkan.
+Tunggu sampai selesai (mungkin 1-2 menit).
+
+Expected output:
+  added 50 packages, and audited 51 packages in 5s
+  found 0 vulnerabilities
+
+❌ Kalau ada error:
+  npm install --legacy-peer-deps
+
+✓ Dependencies installed? GO TO STEP 6
+
+
+✅ STEP 6: CREATE .ENV FILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Copy .env.example jadi .env:
+
+LINUX / macOS:
+  cp .env.example .env
+
+WINDOWS (PowerShell):
+  Copy-Item .env.example .env
+
+WINDOWS (Command Prompt):
+  copy .env.example .env
+
+Verify:
+  ls .env       (Linux/macOS)
+  dir .env      (Windows)
+
+✓ .env file created? GO TO STEP 7
+
+
+✅ STEP 7: CONFIGURE X5 LABS API KEY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Buka file .env dengan editor:
+
+LINUX / macOS:
+  nano .env
+  (edit, tekan Ctrl+X, Y, Enter)
+
+WINDOWS:
+  notepad .env
+  (edit and save)
+
+ATAU pakai VS Code:
+  code .env
+
+EDIT FILE INI:
+
+  X5_API_KEY=your_api_key_here
+  X5_BASE_URL=https://api.x5lab.dev
+
+MENJADI:
+
+  X5_API_KEY=sk-ant-abc123def456xyz...
+  X5_BASE_URL=https://api.x5lab.dev
+
+TOKEN DARI MANA?
+  ➜ Email dari X5 Labs
+  ➜ Cari bagian: "ANTHROPIC_AUTH_TOKEN"
+  ➜ Copy string panjang itu
+
+CONTOH:
+  X5_API_KEY=sk-ant-f7p2q8r9s0t1u2v3w4x5y6z7a8b9c0d1
+  X5_BASE_URL=https://api.x5lab.dev
+
+⚠️  PENTING:
+  - Jangan ada tanda petik: X5_API_KEY=token (BENAR)
+  - Jangan: X5_API_KEY="token" (SALAH)
+  - Jangan ada spasi di awal/akhir token
+
+✓ API key configured? GO TO STEP 8
+
+
+✅ STEP 8: MAKE EXECUTABLE (Linux/macOS ONLY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LINUX / macOS saja:
+  chmod +x x5-claude-cli.js
+
+WINDOWS: Skip step ini
+
+✓ Script executable? GO TO STEP 9
+
+
+✅ STEP 9: RUN THE CLI!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Pastikan kamu masih di folder my-claude-cli, ketik:
+  npm start
+
+EXPECTED OUTPUT:
+  ╔════════════════════════════════════════╗
+  ║   X5 Labs Claude CLI (No Time Limit)   ║
+  ╚════════════════════════════════════════╝
+
+  Commands:
+    /clear   - Clear conversation history
+    /tokens  - Show token usage
+    /exit    - Exit the program
+
+  You:
+
+Kalau kamu lihat "You:" prompt, SELAMAT! 🎉
+
+✓ CLI running successfully? GO TO STEP 10
+
+
+✅ STEP 10: TEST IT!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ketik prompt pertama kamu:
+  You: Hello! Buatkan function untuk hitung fibonacci
+
+Tekan Enter, tunggu response...
+
+EXPECTED:
+  Claude: [response dari AI]
+  [Tokens: input=123, output=456, session=579]
+
+Kalau dapat response, semuanya working! 🚀
+
+Coba command lain:
+  You: /tokens
+  (Show token usage)
+
+  You: /exit
+  (Exit program)
+
+✓ Everything working? SETUP COMPLETE! ✨
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎉 CONGRATULATIONS! 🎉
+
+Kamu sekarang punya custom Claude Code yang:
+  ✅ Mirip Claude Code official
+  ✅ Pakai X5 Labs (Rp 45k-150k)
+  ✅ TANPA 5-hour time limit
+  ✅ Full conversation memory
+  ✅ Token tracking
+
+NEXT STEPS:
+  1. Use untuk project coding
+  2. Track token usage (/tokens)
+  3. Beli top-up X5 Labs kalau sudah habis
+  4. Customize model kalau mau (Sonnet vs Opus)
+
+Happy coding! 💻✨
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  TROUBLESHOOTING
+
+Kalau ada error, check:
+
+1. "X5_API_KEY tidak ditemukan"
+   ➜ Check .env file ada
+   ➜ Pastikan X5_API_KEY=... isinya
+
+2. "Cannot find module 'axios'"
+   ➜ npm install
+   ➜ npm install --legacy-peer-deps
+
+3. "Invalid API key"
+   ➜ Check token di .env benar
+   ➜ Ga ada spasi atau typo
+
+4. Program stuck di "Claude:"
+   ➜ Tekan Ctrl+C
+   ➜ Coba short prompt
+
+5. Error lain?
+   ➜ Delete node_modules: rm -rf node_modules
+   ➜ npm install lagi
+
+Kalau masih error, cek SETUP_OPSI_C.md untuk penjelasan detail!
