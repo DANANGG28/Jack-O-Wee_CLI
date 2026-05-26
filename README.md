@@ -1,6 +1,6 @@
 # 🤖 Jack's Agentic CLI
 
-> Claude Code-like CLI menggunakan X5 Labs API - **TANPA 5-hour time limit!**
+> Claude Code-like CLI menggunakan eksternal API **TANPA 5-hour time limit!**
 
 ## ✨ Features
 
