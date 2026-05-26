@@ -153,9 +153,8 @@ Jack | Haiku: 2 + 2 = 4
 
 ## 📊 Pricing
 
-X5 Labs gateway pricing:
-- **Rp 45,000** = 5M tokens (~normal usage seminggu)
-- **Rp 150,000** = 50M tokens (~heavy usage/burst)
+Jack's Agentic pricing:
+- soon
 
 ### Token Cost Comparison
 
@@ -300,12 +299,11 @@ MIT
 
 ## 🔗 Links
 
-- [X5 Labs](https://x5lab.dev)
 - [Claude Documentation](https://docs.claude.com)
 - [Node.js](https://nodejs.org)
 
 ---
 
-**Made with ❤️ by Jack Kow Wee**
+**Made with ❤️ by NangzzPrjkt**
 
 Happy coding! 🚀
